@@ -3,9 +3,11 @@ library(ggplot2)
 library(dplyr)
 
 dataI <- read_delim("Resources/dati.csv",col_names = FALSE, escape_double = FALSE, trim_ws = TRUE)
-speedups<- read_csv("cmake-build-debug/Outputs/speedup.csv",col_names = FALSE)
-reps=length(speedups$X1)/4;
-threads=c(rep(1,reps),rep(2,reps),rep(4,reps),rep(8,reps))
+speedups<- read_csv("saved/DatasetKaggle/speedup.csv",col_names = FALSE)
+#speedups<- read_csv("saved/DatasetNew/speedup.csv",col_names = FALSE)
+
+reps=length(speedups$X1)/9;
+threads=c(rep(1,reps),rep(2,reps),rep(4,reps),rep(8,reps),rep(16,reps),rep(32,reps),rep(64,reps),rep(128,reps),rep(256,reps))
 speedups$threads=threads
 colnames(speedups)=c("Speedup","Threads")
 speedups$Threads=as.integer(speedups$Threads)
@@ -48,6 +50,7 @@ r=ggplot(speedups,aes(x=Threads,y=Speedup),color=speedups$color)+
   ylab("Speedup")+
   ggtitle("Speedups")+
   theme_grey()+
+  xlim(0, 20)+
   stat_summary(fun = mean, geom = "point", color = "blue", size = 3) +
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0.2,color="blue")+
   geom_line(data=speed_agg, aes(x=Threads,y=Speedups),color="blue")+
@@ -60,3 +63,4 @@ speed_agg$ulim=speed_agg$Speedups+qt(0.025, speed_agg$n-1, lower.tail = FALSE)*s
 
 ggsave(filename = "Figures/Speedup.png", plot = r, width = 6, height = 4, dpi = 300)
 
+speed_agg

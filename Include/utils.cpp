@@ -202,13 +202,16 @@ while (change > 0) { // this cycle ends when the classification doesn't change f
 
 #pragma omp barrier // ensures the counters are ready to compute new centroids
 
-#pragma omp for nowait
+#pragma omp for
         for (int i=0;i<k;i++) { // compute centroids
             C[i][0]=sums[i][0]/contatori[i];
             C[i][1]=sums[i][1]/contatori[i];
         }
 
+
+
 }
+
 
 
 }
@@ -218,46 +221,4 @@ while (change > 0) { // this cycle ends when the classification doesn't change f
     return;
 
 }
-
-
-int get_data_parallel(string filename, vector<vector<double>> &v) {
-
-
-    int N=21600;
-    ifstream file(filename);
-    if (!file.is_open()) {
-        cerr << "Errore nell'apertura del file: " << filename << endl;
-        return 0;
-    }
-    v.resize(N);
-
-
-#pragma omp parallel
-    {
-
-    string line;
-#pragma omp for schedule(static)
-    for (int i=0;i<N;i++) {
-#pragma omp critical
-        getline(file, line);
-        stringstream ss(line);
-        string cell;
-        vector<double> row(2);
-        for (int j=0;j<2;j++) {
-            getline(ss, cell, ',');
-            row[j]=stod(cell);
-
-        }
-#pragma omp critical
-        v[i]=row;
-
-    }
-
-    }
-
-
-    file.close();
-    return N;
-}
-
 

@@ -15,21 +15,22 @@ using namespace std;
 
 int main() {
     int p; // parameter defining the number of threads (n_t=2^p)
-    int upperP=4;
+    int upperP=9;
     int Nrep=100; // number of tests given the number of threads
     int rep; // loop index
-    vector<double> speedups(Nrep*4); // vector containing speedups
+    vector<double> speedups(Nrep*(upperP)); // vector containing speedups
 
     for (p=0;p<upperP;p++) { // loop defining the number of thrteads
         for (rep=0;rep<Nrep;rep++) { // loop of tests
             int k=12; // number of clusters
 
             string filename="./Resources/dati.csv"; // data file
+            //string filename="./Resources/new_cluster.csv"; // data file
 
             vector<vector<double>> v; // vector containing data
-            double startTime = omp_get_wtime(); // starting time for the serial algorithm
             int N=get_data_serial(filename,v); // collecting data and data size
             vector<int> ass(N); // initialize a assignment vector
+            double startTime = omp_get_wtime(); // starting time for the serial algorithm
             k_means_2D_serial(k,N,v,ass); // applies serial algorithm
             double endTime = omp_get_wtime(); // final time for the serial algorithm
 
@@ -40,9 +41,9 @@ int main() {
             int threads_number=pow(2,p); // sets the number of threads
 
             vector<vector<double>> w; // defines a vector for data
-            startTime = omp_get_wtime(); // starting time for the parallel algorithm
             N=get_data_serial( filename,w); // collecting data and data size
             vector<int> ass2(N); // initializes a vector of assigments
+            startTime = omp_get_wtime(); // starting time for the parallel algorithm
             k_means_2D_parallel(k,N,w,ass2,threads_number); // applies parallel algorithm
             endTime = omp_get_wtime(); // final time for parallel algorithm
 
@@ -67,13 +68,15 @@ int main() {
             }
 
             speedups[p*Nrep+rep]=time1/time2; // stores speedups
+            //cout<<"Speedup: "<<time1/time2<<endl;
         }
+
     }
 
     // saves speedups in a csv file
     std::ofstream file3("Outputs/speedup.csv");
     if (file3.is_open()) {
-        for (int i = 0; i < Nrep*4; ++i) {
+        for (int i = 0; i < Nrep*upperP; ++i) {
             file3 << speedups[i] << "\n";
         }
         file3.close();
