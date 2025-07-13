@@ -1,0 +1,108 @@
+k=10 N=10000 con soglia 0
+\textbf{Threads} & Speedups  \\ \hline \\
+1  &  0.974 \\ \hline \\
+2  &  1.76  \\ \hline \\
+4  &  2.21  \\ \hline \\
+8  &  2.65   \\ \hline \\
+16  &  2.69  \\ \hline \\
+32  &  2.47  \\ \hline \\
+64  &  1.92  \\ \hline \\
+128  &  1.36  \\ \hline \\
+256  &  0.768 \\ \hline \\
+
+k=10 N=100000
+\textbf{Threads} & Speedups  \\ \hline \\
+1  &   1.00 \\ \hline \\
+2  &   1.44 \\ \hline \\
+4  &   2.07 \\ \hline \\
+8  &   3.38 \\ \hline \\
+16  &   3.30 \\ \hline \\
+32  &   3.24 \\ \hline \\
+64  &   3.29 \\ \hline \\
+128  &   2.96 \\ \hline \\
+256  &   2.59 \\ \hline \\
+
+k=10 N=1000000
+\textbf{Threads} & Speedups  \\ \hline \\
+1  &  0.994 \\ \hline \\
+2  &  1.70 \\ \hline \\
+4  &  2.49 \\ \hline \\
+8  &  3.00 \\ \hline \\
+16  &  2.92 \\ \hline \\
+32  &  2.96 \\ \hline \\
+64  &  3.00 \\ \hline \\
+128  &  3.04 \\ \hline \\
+256  &  3.25 \\ \hline \\
+
+k=20 N=10000
+\textbf{Threads} & Speedups  \\ \hline \\
+1  &   1.01\\ \hline \\
+2  &   1.84\\ \hline \\
+4  &   2.70\\ \hline \\
+8  &   3.01\\ \hline \\
+16  &   2.55\\ \hline \\
+32  &   2.63\\ \hline \\
+64  &   2.18\\ \hline \\
+128  &   1.64\\ \hline \\
+256  &   1.22\\ \hline \\
+
+k=20 N=100000
+\textbf{Threads} & Speedups  \\ \hline \\
+1  &   1.00 \\ \hline \\
+2  &   1.73 \\ \hline \\
+4  &   2.57 \\ \hline \\
+8  &   3.18 \\ \hline \\
+16  &   3.58 \\ \hline \\
+32  &   3.02 \\ \hline \\
+64  &   3.03 \\ \hline \\
+128  &   2.87 \\ \hline \\
+256  &   2.63 \\ \hline \\
+
+k=20 N=1000000
+\textbf{Threads} & Speedups   
+1  &  0.982\\ \hline \\
+2  &  1.71 \\ \hline \\
+4  &  2.52 \\ \hline \\
+8  &  2.95 \\ \hline \\
+16  &  2.89 \\ \hline \\
+32  &  2.90 \\ \hline \\
+64  &  2.92 \\ \hline \\
+128  &  2.91 \\ \hline \\
+256  &  2.88 \\ \hline \\
+
+k=40 N=10000
+\textbf{Threads} & Speedups  \\ \hline \\
+1  &   1.01 \\ \hline \\
+2  &   1.70 \\ \hline \\
+4  &   2.08 \\ \hline \\
+8  &   3.33 \\ \hline \\
+16  &   3.37 \\ \hline \\
+32  &   3.09 \\ \hline \\
+64  &   2.97\\ \hline \\
+128  &   2.41\\ \hline \\
+256  &   1.85\\ \hline \\
+
+k=40 N=100000
+\textbf{Threads} & Speedups  \\ \hline \\
+1  &   1.00 \\ \hline \\
+2  &   1.73 \\ \hline \\
+4  &   2.58 \\ \hline \\
+8  &   2.98 \\ \hline \\
+16  &   2.90 \\ \hline \\
+32  &   2.94 \\ \hline \\
+64  &   2.93 \\ \hline \\
+128  &   2.88 \\ \hline \\
+256  &   2.77 \\ \hline \\
+
+k=40 N=1000000
+\textbf{Threads} & Speedups  \\ \hline \\
+1  &   1.01 \\ \hline \\
+2  &   1.71 \\ \hline \\
+4  &   2.54 \\ \hline \\
+8  &   2.92 \\ \hline \\
+16  &   2.91 \\ \hline \\
+32  &   2.91 \\ \hline \\
+64  &   2.90 \\ \hline \\
+128  &   2.90 \\ \hline \\
+256  &   2.89 \\ \hline \\
+

@@ -2,7 +2,7 @@ library(readr)
 library(ggplot2)
 library(dplyr)
 
-cartella="saved/K40N1000000/"
+cartella="saved/DataKaggle/"
 dataI <- read_delim(paste0(cartella,"new_cluster_k_40_N_1000000.csv"),col_names = FALSE, escape_double = FALSE, trim_ws = TRUE)
 speedups<- read_csv(paste0(cartella,"speedup.csv"),col_names = FALSE)
 #speedups<- read_csv(paste0(cartella,"speedup.csv"),col_names = FALSE)
