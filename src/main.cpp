@@ -16,16 +16,16 @@ using namespace std;
 int main() {
     int p; // parameter defining the number of threads (n_t=2^p)
     int upperP=9;
-    int Nrep=100; // number of tests given the number of threads
+    int Nrep=10; // number of tests given the number of threads
     int rep; // loop index
     vector<double> speedups(Nrep*(upperP)); // vector containing speedups
 
     for (p=0;p<upperP;p++) { // loop defining the number of thrteads
         for (rep=0;rep<Nrep;rep++) { // loop of tests
-            int k=12; // number of clusters
+            int k=40; // number of clusters
 
-            string filename="./Resources/dati.csv"; // data file
-            //string filename="./Resources/new_cluster.csv"; // data file
+            //string filename="./Resources/dati.csv"; // data file
+            string filename="./Resources/Datasets/new_cluster_k_40_N_1000000.csv"; // data file
 
             vector<vector<double>> v; // vector containing data
             int N=get_data_serial(filename,v); // collecting data and data size
@@ -68,7 +68,7 @@ int main() {
             }
 
             speedups[p*Nrep+rep]=time1/time2; // stores speedups
-            //cout<<"Speedup: "<<time1/time2<<endl;
+            cout<<"Speedup: "<<time1/time2<<endl;
         }
 
     }

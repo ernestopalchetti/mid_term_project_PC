@@ -57,7 +57,8 @@ void k_means_2D_serial(int k, int N, vector<vector<double>> &v, vector<int> & as
     uniform_int_distribution<> distrib(0, N); // uniform distribution over [0,N]
 
     int change =N; // number of points that change cluster at one step
-
+    int soglia=0.01*N;
+    //int soglia=0;
     // selecting k indexes for a random selection of centroids
     int p;
     for (int i = 0; i < k; ++i) {
@@ -69,7 +70,7 @@ void k_means_2D_serial(int k, int N, vector<vector<double>> &v, vector<int> & as
     int kmin; // contains the index (0,...,k-1) of the current closest centroid
 
 
-    while (change > 0) { // convergence criterion: no point changed cluster in a step
+    while (change > soglia) { // convergence criterion: no point changed cluster in a step
 
         // reset counters and partial sums
         for (j=0; j<k; ++j) {
@@ -133,8 +134,8 @@ void k_means_2D_parallel(int k, int N, vector<vector<double>> &v, vector<int> & 
     int change=N; // this variable will contain the number of points classified differently
     double d,dmin;
     int kmin;
-
-
+    int soglia=0.01*N;
+    //int soglia=0;
 
 #pragma omp parallel private(d,dmin,kmin) shared(change) num_threads(threads_number)
     {
@@ -145,7 +146,7 @@ void k_means_2D_parallel(int k, int N, vector<vector<double>> &v, vector<int> & 
 
 
 
-while (change > 0) { // this cycle ends when the classification doesn't change for two consecutive steps
+while (change > soglia) { // this cycle ends when the classification doesn't change for two consecutive steps
     changet=0; // setting to 0 counters and partial summations
 
     for (int j=0;j<k;j++) {
